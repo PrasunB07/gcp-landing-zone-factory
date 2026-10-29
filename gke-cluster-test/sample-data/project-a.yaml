@@ -1,0 +1,34 @@
+project_details:
+  name: "milan-das-project"
+  billing_account: "01C49A-621DC9-A19CC4"
+  lien: false
+  activate_apis:
+    - "serviceusage.googleapis.com"
+    - "servicenetworking.googleapis.com"
+    - "cloudkms.googleapis.com"
+    - "oslogin.googleapis.com"
+    - "compute.googleapis.com"
+    - "logging.googleapis.com"
+    - "bigquery.googleapis.com"
+    - "cloudresourcemanager.googleapis.com"
+    - "cloudbilling.googleapis.com"
+    - "iam.googleapis.com"
+    - "admin.googleapis.com"
+    - "storage-api.googleapis.com"
+    - "monitoring.googleapis.com"
+    - "pubsub.googleapis.com"
+    - "orgpolicy.googleapis.com"
+# service_account_details:
+#   service_accounts:
+#     msgcp-bootstrap-org-sa: #root service account
+#       project_roles:
+#         - "roles/iam.serviceAccountAdmin"
+#         - "roles/compute.admin"
+#         - "roles/iam.workloadIdentityUser"
+#       folder_roles:
+#         - "roles/resourcemanager.folderAdmin"
+#       organization_roles:
+#         - "roles/resourcemanager.organizationAdmin"
+#         - "roles/resourcemanager.projectCreator"
+#         - "roles/serviceusage.serviceUsageConsumer"
+#         - "roles/accesscontextmanager.policyAdmin"

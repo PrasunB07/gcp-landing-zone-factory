@@ -1,0 +1,46 @@
+project_details:
+  name: "gcplz-bootstrap-cg2"
+  billing_account: "01C49A-621DC9-A19CC4"
+  lien: false
+  activate_apis:
+    - "cloudkms.googleapis.com"
+    - "compute.googleapis.com"
+    - "cloudresourcemanager.googleapis.com" 
+    - "cloudbilling.googleapis.com" 
+    - "iam.googleapis.com" 
+    - "serviceusage.googleapis.com"
+    - "monitoring.googleapis.com"
+    - "logging.googleapis.com"
+    - "pubsub.googleapis.com"
+    - "orgpolicy.googleapis.com"
+    - "dns.googleapis.com"
+    - "billingbudgets.googleapis.com"
+    - "sts.googleapis.com"
+service_account_details:
+  service_accounts:
+    msgcp-core-iam-sa:
+      project_roles:
+        - "roles/iam.serviceAccountAdmin"
+        - "roles/iam.workloadIdentityUser"
+        - "roles/iam.workloadIdentityPoolAdmin"
+      folder_roles:
+      organization_roles:
+        - "roles/resourcemanager.organizationAdmin"
+workload_identity_provider_details:
+  workload_identity_pool_id: "bootstrap-pool"
+  workload_identity_provider:
+    msgcp-bootstrap-org-provider:
+      description: "Terraform Bootstrap Provider"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_workspace_name: "assertion.terraform_workspace_name"
+      attribute_condition: "assertion.sub.startsWith(\"organization:testgcplz:project:dev-testgcplz:workspace:dev-gcp-lz-tf-foundation-core-iam\")"
+      allowed_audiences: ["https://app.terraform.io/app/testgcplz/workspaces/dev-gcp-lz-tf-foundation-core-iam"]
+      service_account_id: "msgcp-core-iam-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_workspace_name/dev-gcp-lz-tf-foundation-core-iam"
+   

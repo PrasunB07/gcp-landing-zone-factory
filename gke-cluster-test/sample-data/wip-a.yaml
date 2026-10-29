@@ -1,0 +1,20 @@
+workload_identity_provider_details:
+  workload_identity_pool_id: "bootstrap-pool"
+  workload_identity_provider:
+    msgcp-bootstrap-org-provider:
+      description: "Terraform Bootstrap service account"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_workspace_name: "assertion.terraform_workspace_name"
+      attribute_condition: 'assertion.sub.startsWith("organization:testgcplz:project:dev-testgcplz:workspace:dev-gcp-lz-tf-foundation-bootstrap")'
+      allowed_audiences:
+        [
+          "https://app.terraform.io/app/testgcplz/workspaces/dev-gcp-lz-tf-foundation-bootstrap/",
+        ]
+      service_account_id: "msgcp-bootstrap-org-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_workspace_name/dev-gcp-lz-tf-foundation-bootstrap"

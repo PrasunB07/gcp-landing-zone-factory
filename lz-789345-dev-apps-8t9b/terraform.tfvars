@@ -1,0 +1,5 @@
+org_id                    = "514041104475"
+anchor_name               = "desktop-anchor-folder"
+project_config_yamls      = "./sample-data/project/config"
+project_organization_yaml = "./sample-data/project/organization.yaml"
+billing_account           = "01C49A-621DC9-A19CC4"
