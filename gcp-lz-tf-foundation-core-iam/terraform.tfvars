@@ -1,0 +1,5 @@
+yamlconfig_dir = "./sample-data/"
+project_number = "1076768367581"
+project_id     = "gcplz-bootstrap-cg2"
+org_id         = "514041104475"
+folder_id      = "folders/1088249299971"

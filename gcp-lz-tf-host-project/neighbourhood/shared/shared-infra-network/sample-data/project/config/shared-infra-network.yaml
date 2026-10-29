@@ -1,0 +1,23 @@
+project_details:
+  name: "gcp-shared-infra-network"
+  domain_prefix: "gcp-shared-infra-network-domain"
+  folder_name: "shared-infra"
+  apis:
+    activate_apis:
+      - "compute.googleapis.com"
+      - "cloudkms.googleapis.com"
+      - "dns.googleapis.com"
+      - "cloudbilling.googleapis.com"
+      - "iam.googleapis.com"
+      - "billingbudgets.googleapis.com"
+    disable_services_on_destroy: true
+    disable_dependent_services: true
+  shared_vpc:
+    enable_shared_vpc_host_project: "true"
+    shared_vpc_network_name: "gcp-shared-infra-vpc"
+    shared_vpc_routing_mode: "GLOBAL"
+  vpc_peer:
+    enable_vpc_peer: true
+    vpc_peering_name: "gcp-shared-infra-vpc-peering-gcplz-dev-vpc"
+    peer_project_id: "gcplz-dev-1"
+    peer_network: "gcplz-dev-vpc"

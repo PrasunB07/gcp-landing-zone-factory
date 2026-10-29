@@ -1,0 +1,110 @@
+service_account_details:
+  service_accounts:
+    msgcp-foundation-org-sa:
+      project_roles:
+        - "roles/iam.workloadIdentityUser"
+        - "roles/iam.serviceAccountCreator"
+      folder_roles:
+      organization_roles:
+        - "roles/resourcemanager.organizationAdmin"
+        - "roles/orgpolicy.policyAdmin"
+        - "roles/resourcemanager.tagAdmin"
+        - "roles/resourcemanager.tagUser"
+    msgcp-foundation-host-sa:
+      project_roles:
+        - "roles/iam.workloadIdentityUser"
+      folder_roles:
+        - "roles/compute.networkAdmin"
+        - "roles/serviceusage.serviceUsageAdmin"
+        - "roles/resourcemanager.projectCreator"
+        - "roles/compute.xpnAdmin"
+        - "roles/dns.admin"
+        - "roles/iam.serviceAccountAdmin"
+      organization_roles:
+        - "roles/resourcemanager.folderAdmin"
+        - "roles/billing.admin"
+        - "roles/logging.admin"
+        - "roles/resourcemanager.tagUser"
+        - "roles/monitoring.admin"
+    msgcp-foundation-service-sa:
+      project_roles:
+        - "roles/iam.workloadIdentityUser"
+      folder_roles:
+        - "roles/compute.networkAdmin"
+        - "roles/serviceusage.serviceUsageAdmin"
+        - "roles/resourcemanager.projectCreator"
+        - "roles/compute.xpnAdmin"
+        - "roles/monitoring.admin"
+        - "roles/iam.serviceAccountAdmin"
+      organization_roles:
+        - "roles/resourcemanager.folderAdmin"
+        - "roles/billing.admin"
+        - "roles/resourcemanager.tagUser"
+    msgcp-firewall-policies-sa:
+      project_roles:
+        - "roles/iam.workloadIdentityUser"
+      folder_roles:
+        - "roles/compute.securityAdmin"
+      organization_roles:
+        - "roles/compute.orgFirewallPolicyAdmin"
+        - "roles/compute.orgSecurityResourceAdmin"
+        - "roles/resourcemanager.folderAdmin"
+workload_identity_provider_details:
+  workload_identity_pool_id: "core-iam-pool"
+  workload_identity_provider:
+    msgcp-foundation-org-provider:
+      description: "Terraform Foundation Org Provider"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_workspace_name: "assertion.terraform_workspace_name"
+      attribute_condition: "assertion.sub.startsWith(\"organization:testgcplz:project:dev-testgcplz:workspace:dev-gcp-lz-tf-foundation-org\")"
+      allowed_audiences: ["https://app.terraform.io/app/testgcplz/workspaces/dev-gcp-lz-tf-foundation-org/"]
+      service_account_id: "msgcp-foundation-org-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_workspace_name/dev-gcp-lz-tf-foundation-org"
+    msgcp-foundation-host-provider:
+      description: "Terraform Foundation Host Project Provider"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_project_name: "assertion.terraform_project_name"
+      attribute_condition: "assertion.sub.startsWith(\"organization:testgcplz:project:dev-host\")"
+      allowed_audiences: ["https://app.terraform.io/app/testgcplz/project/dev-host/"]
+      service_account_id: "msgcp-foundation-host-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_project_name/dev-host"
+    msgcp-foundation-serv-provider:
+      description: "Terraform Foundation Service Project Provider"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_project_name: "assertion.terraform_project_name"
+      attribute_condition: "assertion.sub.startsWith(\"organization:testgcplz:project:dev-service\")"
+      allowed_audiences: ["https://app.terraform.io/app/testgcplz/project/dev-service/"]
+      service_account_id: "msgcp-foundation-service-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_project_name/dev-service"
+    msgcp-firewall-policies-provider:
+      description: "Terraform Firewall Policies Provider"
+      disabled: false
+      hostname: "https://app.terraform.io"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.aud: "assertion.aud"
+        attribute.repository: "assertion.repository"
+        attribute.terraform_project_name: "assertion.terraform_project_name"
+      attribute_condition: "assertion.sub.startsWith(\"organization:testgcplz:project:dev-firewall\")"
+      allowed_audiences: ["https://app.terraform.io/app/testgcplz/project/dev-firewall/"]
+      service_account_id: "msgcp-firewall-policies-sa"
+      workload_pool_service_account_role: "roles/iam.workloadIdentityUser"
+      workload_pool_service_account_member: "attribute.terraform_project_name/dev-firewall"     

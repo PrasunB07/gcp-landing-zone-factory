@@ -1,0 +1,47 @@
+project_details:
+  name: "gcplz-dev-red-service"
+  domain_prefix: "gcplz-dev-red-service-network-domain"
+  folder_name: "dev-red"
+  apis:
+    activate_apis:
+      - "compute.googleapis.com"
+      - "cloudkms.googleapis.com"
+      - "dns.googleapis.com"
+      - "cloudbilling.googleapis.com"
+      - "iam.googleapis.com"
+      - "container.googleapis.com"
+    disable_services_on_destroy: true
+    disable_dependent_services: true
+  shared_vpc:
+    enable_shared_vpc_service_project: true
+    svpc_host_project_id: "gcplz-dev-1"
+    shared_vpc_network_name: "gcplz-dev-vpc"
+service_account_details:
+  service_accounts:
+    gcplz-dev-red-service2-sa:
+      subnet_roles:
+        - "roles/compute.networkUser"
+subnet_details:
+  subnets:
+    subnet-02a:
+      description: "simple subnet test"
+      ip_cidr_range: "10.10.2.0/24"
+      region: "us-central1"
+      flow_logs_enable: "true"
+      role: "ACTIVE"
+      secondary_ip_range:
+        - range_name: "subnet-01-secondary-01a"
+          ip_cidr_range: "192.168.22.0/24"
+        - range_name: "subnet-02-secondary-01a"
+          ip_cidr_range: "192.169.23.0/24"
+    subnet-02b:
+      description: "simple subnet test2"
+      ip_cidr_range: "10.20.5.0/24"
+      region: "us-central1"
+      flow_logs_enable: "true"
+      role: "ACTIVE"
+      secondary_ip_range:
+        - range_name: "subnet-01-secondary-01b"
+          ip_cidr_range: "192.170.6.0/24"
+        - range_name: "subnet-02-secondary-01b"
+          ip_cidr_range: "192.171.2.0/24"

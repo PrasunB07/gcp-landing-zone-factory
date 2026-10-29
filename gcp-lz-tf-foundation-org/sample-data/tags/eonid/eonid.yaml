@@ -1,0 +1,14 @@
+tag:
+  tag_name: "dev-eonid"
+  parent: "organizations/514041104475" #projects/project_id
+  tag_description: "eonid tags"
+  purpose: "GCE_FIREWALL"
+  purpose_data:
+    network: "gcplz-dev-1/gcplz-dev-vpc"
+  tag_value:
+    dev-eonid_1: 
+      tag_value_description: "eonid 1"
+    dev-eonid_2: 
+      tag_value_description: "eonid 2"
+    dev-eonid_3: 
+      tag_value_description: "eonid 3"

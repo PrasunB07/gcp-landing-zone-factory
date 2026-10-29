@@ -1,0 +1,5 @@
+name: "dev-amber"
+org_policies:
+  bigquery.disableBQOmniAzure:
+    rules:
+      - enforce: false

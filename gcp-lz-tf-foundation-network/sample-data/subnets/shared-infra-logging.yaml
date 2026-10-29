@@ -1,0 +1,28 @@
+subnet_details:
+  service_project_id: "shared-infra-logging"
+  host_project_id: "shared-infra-logging"
+  subnets:
+    subnet-01a:
+      description: "simple subnet test"
+      ip_cidr_range: "10.10.10.0/24"
+      region: "us-central1"
+      private_ip_google_access: "true"
+      flow_logs_enable: "true"
+      role: "ACTIVE"
+      secondary_ip_range:
+        - range_name: "subnet-01-secondary-01a"
+          ip_cidr_range: "192.168.64.0/24"
+        - range_name: "subnet-02-secondary-01a"
+          ip_cidr_range: "192.168.65.0/24"
+    subnet-01b:
+      description: "simple subnet test2"
+      ip_cidr_range: "10.20.10.0/24"
+      region: "us-central1"
+      private_ip_google_access: "true"
+      flow_logs_enable: "true"
+      role: "ACTIVE"
+      # secondary_ip_range:
+      #   - range_name: "subnet-01-secondary-01b"
+      #     ip_cidr_range: "192.169.64.0/24"
+      #   - range_name: "subnet-02-secondary-01b"
+      #     ip_cidr_range: "192.169.65.0/24"

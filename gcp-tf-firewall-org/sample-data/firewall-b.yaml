@@ -1,0 +1,42 @@
+project_id: "bootstrap-wip-sa"
+network: "dev-amber-vpc"
+custom_rules:
+  dev-amber-vpc-fr-gcp-out-allow-onprem:
+    description: "egress gcp to onprem"
+    direction: "EGRESS"
+    action: "allow"
+    targets:
+      - "test-targets"
+    sources:
+      - "test-source"
+    ranges:
+      - "192.0.0.0"
+      - "188.0.0.0"
+    use_service_accounts: "false"
+    rules:
+      - protocol: "tcp"
+        ports: ["22","443"] 
+      - protocol: "udp"
+        ports: ["53","889"]   
+    extra_attributes:
+      priority: 1000   
+
+  dev-amber-vpc-onprem-gcp-in-allow-onprem:
+    description: "ingress onprem to gcp"
+    direction: "INGRESS"
+    action: "allow"
+    targets:
+      - "ny-test-targets"
+    sources:
+      - "ny-test-source"
+    ranges:
+      - "172.0.0.0"
+    use_service_accounts: "false"
+    rules:
+      - protocol: "tcp"
+        ports: ["22","443"] 
+      - protocol: "udp"
+        ports: ["53","889"]   
+    extra_attributes:
+      priority: 2000   
+  

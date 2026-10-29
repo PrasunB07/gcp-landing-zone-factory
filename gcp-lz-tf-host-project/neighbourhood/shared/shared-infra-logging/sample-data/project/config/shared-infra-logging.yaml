@@ -1,0 +1,19 @@
+project_details:
+  name: "shared-infra-logging-22"
+  domain_prefix: "shared-logging-domain"
+  folder_name: "shared-infra"
+  apis:
+    activate_apis:
+      - "compute.googleapis.com"
+      - "cloudkms.googleapis.com"
+      - "dns.googleapis.com"
+      - "monitoring.googleapis.com"
+      - "cloudbilling.googleapis.com"
+      - "iam.googleapis.com"
+    disable_services_on_destroy: true
+    disable_dependent_services: true
+service_account_details:
+  service_accounts:
+    shared-infra-logging-22:
+      project_roles:
+        - "roles/logging.viewer" #<<role used for terraform testing , not actually needed.

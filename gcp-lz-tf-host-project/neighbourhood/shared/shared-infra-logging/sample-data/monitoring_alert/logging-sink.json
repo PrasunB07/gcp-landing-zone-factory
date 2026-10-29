@@ -1,0 +1,37 @@
+{
+  "displayName": "Logging alert on bootstrap project",
+  "documentation": {
+    "content": "This Alert is for Logging export sink ",
+    "mimeType": "text/markdown"
+  },
+  "userLabels": {
+    "logging_alert": "logging_export_sink"
+  },
+  "conditions": [
+    {
+      "displayName": "Logging export sink - Exported log entries",
+      "conditionThreshold": {
+        "filter": "resource.type = \"logging_sink\" AND resource.labels.project_id = \"gcplz-bootstrap-cg2\" AND metric.type = \"logging.googleapis.com/exports/log_entry_count\"",
+        "aggregations": [
+          {
+            "alignmentPeriod": "300s",
+            "crossSeriesReducer": "REDUCE_NONE",
+            "perSeriesAligner": "ALIGN_MEAN"
+          }
+        ],
+        "comparison": "COMPARISON_GT",
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        },
+        "thresholdValue": 10
+      }
+    }
+  ],
+  "alertStrategy": {
+    "autoClose": "604800s"
+  },
+  "combiner": "OR",
+  "enabled": true,
+  "notificationChannels": []
+}

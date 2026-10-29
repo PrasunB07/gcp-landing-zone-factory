@@ -1,0 +1,15 @@
+dashboard_details:
+  service_project_id: "shared-infra-logging"
+  dashboards:
+    #dashboard for displaying google cloud storage object's statistics
+    gcs_object_count_dashboard:
+      json_config: "./sample-data/monitoring_db/gcs_object_count.json"
+    #dashboard for displaying firewall dropped bytes
+    firewall_dropped_bytes_dashboard:
+      json_config: "./sample-data/monitoring_db/firewall_dropped_bytes.json"
+    #dashboard for displaying log bytes ingested
+    log_bytes_ingested_dashboard:
+      json_config: "./sample-data/monitoring_db/log_bytes_ingested.json"
+    #dashboard for displaying pubsub topic published requests
+    pubsub_topic_publish_requests_dashboard:
+      json_config: "./sample-data/monitoring_db/pubsub_topic_publish_requests.json"

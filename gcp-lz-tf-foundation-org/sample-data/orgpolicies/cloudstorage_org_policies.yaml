@@ -1,0 +1,7 @@
+org_policies:
+  storage.publicAccessPrevention:
+    rules:
+      - enforce: true
+  storage.uniformBucketLevelAccess:
+    rules:
+      - enforce: true

@@ -1,0 +1,5 @@
+organization:
+  enable_lien: false
+  consumer_quotas: []
+  default_network_tier: "STANDARD" # PREMIUM | STANDARD
+  domain: "dev.testgcplz.net"

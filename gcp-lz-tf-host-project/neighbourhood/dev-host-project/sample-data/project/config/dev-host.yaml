@@ -1,0 +1,28 @@
+project_details:
+  name: "gcplz-dev-1"
+  domain_prefix: "gcplz-dev-network-domain"
+  folder_name: "dev-amber"
+  apis:
+    activate_apis:
+      - "compute.googleapis.com"
+      - "cloudkms.googleapis.com"
+      - "dns.googleapis.com"
+      - "cloudbilling.googleapis.com"
+      - "iam.googleapis.com"
+      - "cloudresourcemanager.googleapis.com"
+    disable_services_on_destroy: true
+    disable_dependent_services: true
+  shared_vpc:
+    enable_shared_vpc_host_project: "true"
+    shared_vpc_network_name: "gcplz-dev-vpc"
+    shared_vpc_routing_mode: "REGIONAL"
+  vpc_peer:
+    enable_vpc_peer: true
+    vpc_peering_name: "gcplz-dev-vpc-peering-gcp-shared-infra-vpc"
+    peer_project_id: "gcp-shared-infra-network"
+    peer_network: "gcp-shared-infra-vpc"
+service_account_details:
+  service_accounts:
+    shared-infra-logging-22:
+      project_roles:
+        - "roles/logging.viewer" #<<role used for terraform testing , not actually needed.
